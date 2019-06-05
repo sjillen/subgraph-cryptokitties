@@ -1,0 +1,35 @@
+type Pregnant @entity {
+  id: ID!
+  owner: Bytes! # address
+  matronId: BigInt! # uint256
+  sireId: BigInt! # uint256
+  cooldownEndBlock: BigInt! # uint256
+}
+
+type Transfer @entity {
+  id: ID!
+  from: Bytes! # address
+  to: Bytes! # address
+  tokenId: BigInt! # uint256
+}
+
+type Approval @entity {
+  id: ID!
+  owner: Bytes! # address
+  approved: Bytes! # address
+  tokenId: BigInt! # uint256
+}
+
+type Birth @entity {
+  id: ID!
+  owner: Bytes! # address
+  kittyId: BigInt! # uint256
+  matronId: BigInt! # uint256
+  sireId: BigInt! # uint256
+  genes: BigInt! # uint256
+}
+
+type ContractUpgrade @entity {
+  id: ID!
+  newContract: Bytes! # address
+}

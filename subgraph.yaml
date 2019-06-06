@@ -1,4 +1,5 @@
 specVersion: 0.0.1
+description: CryptoKitties Explorer
 schema:
   file: ./schema.graphql
 dataSources:
@@ -18,6 +19,7 @@ dataSources:
         - Approval
         - Birth
         - ContractUpgrade
+        - CryptoKitty
       abis:
         - name: Contract
           file: ./abis/Contract.json

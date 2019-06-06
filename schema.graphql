@@ -33,3 +33,13 @@ type ContractUpgrade @entity {
   id: ID!
   newContract: Bytes! # address
 }
+
+type CryptoKitty @entity {
+  id: ID!
+  owner: Bytes! # address
+  kittyId: BigInt! # uint256
+  matronId: BigInt! # uint256
+  sireId: BigInt! # uint256
+  genes: BigInt! # uint256
+  birthTime: BigInt! # uint256
+}

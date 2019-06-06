@@ -10,7 +10,8 @@ import {
   Transfer,
   Approval,
   Birth,
-  ContractUpgrade
+  ContractUpgrade,
+  CryptoKitty,
 } from "../generated/schema"
 
 export function handlePregnant(event: PregnantEvent): void {
@@ -32,6 +33,10 @@ export function handleTransfer(event: TransferEvent): void {
   entity.to = event.params.to
   entity.tokenId = event.params.tokenId
   entity.save()
+
+  let kitty = CryptoKitty.load(event.params.tokenId.toString());
+  kitty.owner = event.params.to;
+  kitty.save();
 }
 
 export function handleApproval(event: ApprovalEvent): void {
@@ -54,6 +59,15 @@ export function handleBirth(event: BirthEvent): void {
   entity.sireId = event.params.sireId
   entity.genes = event.params.genes
   entity.save()
+
+  let kitty = new CryptoKitty(event.params.kittyId.toString());
+  kitty.owner = event.params.owner
+  kitty.kittyId = event.params.kittyId
+  kitty.matronId = event.params.matronId
+  kitty.sireId = event.params.sireId
+  kitty.genes = event.params.genes
+  kitty.birthTime = event.block.timestamp
+  kitty.save()
 }
 
 export function handleContractUpgrade(event: ContractUpgradeEvent): void {
